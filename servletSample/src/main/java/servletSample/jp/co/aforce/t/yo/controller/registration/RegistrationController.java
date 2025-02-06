@@ -39,20 +39,18 @@ public class RegistrationController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // フォームからのデータ取得
+        
         String id = request.getParameter("id");
         String password = request.getParameter("password");
         String username = request.getParameter("username");
         int age = Integer.parseInt(request.getParameter("age"));
-
-        // DTOの作成
+        
         UsersDto user = new UsersDto();
         user.setUserID(id);
         user.setPassword(password);
         user.setUserName(username);
         user.setAge(age);
 
-        // DAOを利用してデータベースに登録
         RegisterDao dao = new RegisterDao();
         boolean isSuccess = dao.insertUser(user);
 

@@ -18,10 +18,10 @@
 
 	<form action = "/servletSample/registration" method = "POST">
 	
-		<p><div class = "option">ID</div> <input type = "text" name = "id"></p>
-		<p><div class = "option">Password</div> <input type= "password" name = "password"></p>
-		<p><div class = "option">User Name</div> <input type= "text" name = "username"></p>
-		<p><div class = "option">Age</div> <input type= "number" name = "age"></p>
+		<p><div class = "option">ID</div> <input type = "text" name = "id" required maxlength="50" pattern="[A-Za-z0-9]+"></p>
+		<p><div class = "option">Password</div> <input type= "password" name = "password" required maxlength="100"></p>
+		<p><div class = "option">User Name</div> <input type= "text" name = "username" maxlength="100"></p>
+		<p><div class = "option">Age</div> <input type= "text" name = "age" maxlength="3" pattern="[0-9]+"></p>
 		<p><input type = "submit" value = "Register"></p>
 
 	</form>

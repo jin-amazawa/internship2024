@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import servletSample.jp.co.aforce.t.yo.dao.RegisterDao;
 import servletSample.jp.co.aforce.t.yo.dto.UsersDto;
+import servletSample.jp.co.aforce.t.yo.model.RegisterModel;
 
 /**
  * Servlet implementation class RegistrationController
@@ -43,7 +43,16 @@ public class RegistrationController extends HttpServlet {
         String id = request.getParameter("id");
         String password = request.getParameter("password");
         String username = request.getParameter("username");
-        int age = Integer.parseInt(request.getParameter("age"));
+        //int age = Integer.parseInt(request.getParameter("age"));
+        
+        
+        String ageStr = request.getParameter("age");
+        int age = 0; 
+
+        if (ageStr != null && !ageStr.trim().isEmpty()) {
+                age = Integer.parseInt(ageStr);
+        }
+        
         
         UsersDto user = new UsersDto();
         user.setUserID(id);
@@ -51,8 +60,8 @@ public class RegistrationController extends HttpServlet {
         user.setUserName(username);
         user.setAge(age);
 
-        RegisterDao dao = new RegisterDao();
-        boolean isSuccess = dao.insertUser(user);
+        RegisterModel model = new RegisterModel();
+        boolean isSuccess = model.newRegister(user);
 
         if (isSuccess) {
             response.sendRedirect("signin.jsp");

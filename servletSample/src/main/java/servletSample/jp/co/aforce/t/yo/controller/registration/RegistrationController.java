@@ -61,6 +61,13 @@ public class RegistrationController extends HttpServlet {
         user.setAge(age);
 
         RegisterModel model = new RegisterModel();
+        boolean exsits = model.SearchId(id);
+        
+        if (exsits) {
+            request.setAttribute("errorID", "このIDは既に使われています");
+            request.getRequestDispatcher("registration.jsp").forward(request, response);
+        }
+        
         boolean isSuccess = model.newRegister(user);
 
         if (isSuccess) {

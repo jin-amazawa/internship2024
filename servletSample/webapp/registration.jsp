@@ -7,14 +7,21 @@
 <title>新規登録</title>
 <style>
 
-	.option{
-		display: inline-block;
-		width: 100px;
-	}
+
+
+
+
+.option{
+	display: inline-block;
+	width: 100px;
+}
 
 </style>
 </head>
 <body>
+
+	<p>${error}</p>
+	<p>${errorID}</p>
 
 	<form action = "/servletSample/registration" method = "POST">
 	
